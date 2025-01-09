@@ -31,7 +31,6 @@ My research interests include **Large Language Models for Software Engineering (
   <div class='paper-box-image'>
     <div>
       <div class="badge">ACM MM 2024</div>
-      <img src='images/500x300.png' alt="EGGesture" width="100%">
     </div>
   </div>
   <div class='paper-box-text' markdown="1">
