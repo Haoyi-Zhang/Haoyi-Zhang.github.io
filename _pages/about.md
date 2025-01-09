@@ -28,11 +28,6 @@ My research interests include **Large Language Models for Software Engineering (
 # 📝 Publications 
 
 <div class='paper-box'>
-  <div class='paper-box-image'>
-    <div>
-      <div class="badge">ACM MM 2024</div>
-    </div>
-  </div>
   <div class='paper-box-text' markdown="1">
 
   [EGGesture: Entropy-Guided Vector Quantized Variational AutoEncoder for Co-Speech Gesture Generation](https://dl.acm.org/doi/pdf/10.1145/3664647.3681392)
@@ -43,6 +38,7 @@ My research interests include **Large Language Models for Software Engineering (
   - The paper proposes an entropy-guided approach leveraging vector quantized variational autoencoders (VQ-VAE) for co-speech gesture generation, addressing key challenges in gesture diversity and synchronization with speech.
   </div>
 </div>
+
 
 
 # 🎖 Honors and Awards
