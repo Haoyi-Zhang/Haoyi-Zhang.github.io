@@ -35,9 +35,10 @@ My research interests include **Large Language Models for Software Engineering (
   Yiyong Xiao, Kai Shu, **Haoyi Zhang**, Baohua Yin, Wai Seng Cheang, Haoyang Wang, Jiechao Gao
 
   [**Project**](https://dl.acm.org/doi/10.1145/3664647.3681392) <strong><span class='show_paper_citations' data='citation-data'></span></strong>
-  - The paper proposes an entropy-guided approach leveraging vector quantized variational autoencoders (VQ-VAE) for co-speech gesture generation, addressing key challenges in gesture diversity and synchronization with speech.
+  - The paper proposes an entropy-guided approach leveraging vector quantized variational autoencoders (VQ-VAE) for co-speech gesture generation, addressing key challenges in gesture diversity and synchronization with speech. This method introduces a novel entropy-guided mechanism to optimize the latent space, ensuring high-quality gesture generation while maintaining natural synchronization with speech patterns.
   </div>
 </div>
+
 
 
 
