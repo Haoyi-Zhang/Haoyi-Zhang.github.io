@@ -2,7 +2,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { links, models, publications, preprints, copy } = require('./content.cjs');
+const { links, models, publications, preprints, equalContribution, competitions, copy } = require('./content.cjs');
 const origin = 'https://haoyi-zhang.github.io/';
 const e = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const anchor = (url, title, cls = '') => '<a' + (cls ? ' class="' + cls + '"' : '') + ' href="' + e(url) + '">' + e(title) + '</a>';
@@ -14,16 +14,32 @@ const labelProfiles = [
 ];
 const sections = ['research','education','publications','contact'];
 
-function workRow(row, words, isPreprint = false) {
-  const [id, title, names, venue, ref, kind] = row;
-  const byline = names.map(n => n === 'Haoyi Zhang' ? '<strong>' + e(n) + '</strong>' : e(n)).join(', ');
+const records = new Map([...publications, ...preprints, ...competitions].map(row => [row[0], row]));
+if (records.size !== publications.length + preprints.length + competitions.length) {
+  throw new Error('Duplicate research output ID');
+}
+for (const [id, names] of Object.entries(equalContribution)) {
+  const authors = records.get(id)?.[2];
+  if (names.length < 2 || !authors || new Set(names).size !== names.length || !names.every(n => authors.includes(n))) {
+    throw new Error('Invalid equal-contribution group: ' + id);
+  }
+}
+
+function workRow(row, words, source = 'publication') {
+  const [id, title, names, venue, ref, kind, status] = row;
+  const equal = new Set(equalContribution[id] || []);
+  const byline = names.map(n => {
+    const name = n === 'Haoyi Zhang' ? '<strong>' + e(n) + '</strong>' : e(n);
+    return name + (equal.has(n) ? '<sup class="contribution-mark" aria-label="' + e(words.contribution) + '">†</sup>' : '');
+  }).join(', ');
+  const titleMarkup = source === 'competition' ? e(title) : anchor(source === 'publication' ? 'https://doi.org/' + ref : ref, title);
   return `
     <li class="paper" id="work-${id}">
-      <span class="paper-type">${e(words.label[isPreprint ? 'preprint' : kind])}</span>
+      <span class="paper-type">${e(words.label[kind])}</span>
       <div>
-        <h3>${anchor(isPreprint ? ref : 'https://doi.org/' + ref, title)}</h3>
+        <h4>${titleMarkup}</h4>
         <p class="authors">${byline}</p>
-        <p class="venue">${e(venue)}</p>
+        <p class="venue">${e(venue)}${status ? ' <span class="work-status">' + e(words.status[status]) + '</span>' : ''}${source === 'competition' ? ' · ' + anchor(ref, words.competitionLink) : ''}</p>
       </div>
     </li>`;
 }
@@ -109,12 +125,24 @@ function page(lang) {
       </div>
     </section>
     <section class="section" id="publications" aria-labelledby="publications-heading">
-      <div class="section-head"><h2 id="publications-heading">${e(w.nav[2])}</h2><p>${e(w.publicationIntro)}</p></div>
-      <ol class="papers">${publications.map(row => workRow(row,w)).join('')}</ol>
-      <div class="section-head preprint-head">
-        <h2>${e(w.preprints)}</h2><p>${e(w.preprintIntro)}</p>
-      </div>
-      <ol class="papers">${preprints.map(row => workRow(row,w,true)).join('')}</ol>
+      <div class="section-head"><h2 id="publications-heading">${e(w.nav[2])}</h2></div>
+      <nav class="work-nav" aria-label="${e(w.resultsNav)}">
+        ${anchor('#published', w.published)}
+        ${anchor('#preprints', w.preprints)}
+        ${anchor('#src', w.competition)}
+      </nav>
+      <section class="work-group" id="published" aria-labelledby="published-heading">
+        <div class="work-head"><h3 id="published-heading">${e(w.published)}</h3><p>${e(w.publicationIntro)} <span class="contribution-key">† ${e(w.contribution)}.</span></p></div>
+        <ol class="papers">${publications.map(row => workRow(row,w)).join('')}</ol>
+      </section>
+      <section class="work-group" id="preprints" aria-labelledby="preprints-heading">
+        <div class="work-head"><h3 id="preprints-heading">${e(w.preprints)}</h3><p>${e(w.preprintIntro)}</p></div>
+        <ol class="papers">${preprints.map(row => workRow(row,w,'public')).join('')}</ol>
+      </section>
+      <section class="work-group" id="src" aria-labelledby="src-heading">
+        <div class="work-head"><h3 id="src-heading">${e(w.competition)}</h3></div>
+        <ol class="papers">${competitions.map(row => workRow(row,w,'competition')).join('')}</ol>
+      </section>
     </section>
     <section class="section collaboration" id="collaboration" aria-labelledby="collaboration-heading">
       <div class="section-head"><h2 id="collaboration-heading">${e(w.collab)}</h2><p>${e(w.modelCopy)}</p></div>

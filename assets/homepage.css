@@ -70,14 +70,20 @@ strong { color: var(--ink); }
 .paper:last-child { border-bottom: 0; }
 .paper:target { background: var(--soft); outline: 1px solid #d6e5f4; outline-offset: 6px; }
 .paper-type { padding-top: 2px; }
-.paper h3 { font-size: 1.01rem; line-height: 1.35; }
-.paper h3 a { color: var(--ink); text-decoration: none; }
-.paper h3 a:hover { color: var(--accent); text-decoration: underline; }
+.paper h4 { margin: 0; font-size: 1.01rem; line-height: 1.35; }
+.paper h4 a { color: var(--ink); text-decoration: none; }
+.paper h4 a:hover { color: var(--accent); text-decoration: underline; }
 .authors, .venue { font-size: .89rem; line-height: 1.45; }
 .authors { margin-top: 5px; }
 .venue { margin-top: 3px; }
-.preprint-head { margin-top: 29px; padding-top: 26px; border-top: 1px solid var(--line); }
-.preprint-head h2 { font-size: 1.62rem; }
+.work-nav { display: flex; flex-wrap: wrap; gap: 5px 18px; margin-bottom: 26px; font-size: .88rem; }
+.work-group { scroll-margin-top: 18px; }
+.work-group + .work-group { margin-top: 24px; padding-top: 22px; border-top: 1px solid var(--line); }
+.work-head h3 { font: 600 clamp(1.28rem, 2.5vw, 1.58rem)/1.2 var(--heading); }
+.work-head p { color: var(--muted); margin-top: 5px; font-size: .88rem; }
+.contribution-key { white-space: nowrap; }
+.contribution-mark { color: var(--accent); font-weight: 750; margin-inline-start: .08em; line-height: 0; }
+.work-status { display: inline-block; margin-inline: 4px 2px; padding: 0 6px; border: 1px solid var(--line); border-radius: 4px; font-size: .77rem; font-weight: 600; }
 .model-list { display: flex; flex-wrap: wrap; gap: 10px; }
 .model-list a { display: block; padding: 7px 12px; border: 1px solid #cfdeee; border-radius: 6px; background: var(--soft); font-size: .88rem; font-weight: 650; text-decoration: none; }
 .model-list a:hover { text-decoration: underline; }
@@ -109,7 +115,7 @@ strong { color: var(--ink); }
   .related-link { grid-column: 2; }
   .education-row { grid-template-columns: 1fr; gap: 7px; padding-top: 0; }
   .paper { grid-template-columns: 1fr; gap: 3px; }
-  .paper h3 { font-size: .98rem; }
+  .paper h4 { font-size: .98rem; }
 }
 @media print {
   :root { background: #fff; }

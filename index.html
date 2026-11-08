@@ -74,12 +74,19 @@
       </div>
     </section>
     <section class="section" id="publications" aria-labelledby="publications-heading">
-      <div class="section-head"><h2 id="publications-heading">Publications</h2><p>Published work, with companion tracks, posters, and demos labeled in the citations.</p></div>
-      <ol class="papers">
+      <div class="section-head"><h2 id="publications-heading">Publications</h2></div>
+      <nav class="work-nav" aria-label="Research outputs">
+        <a href="#published">Published work</a>
+        <a href="#preprints">Public manuscripts</a>
+        <a href="#src">Student Research Competition</a>
+      </nav>
+      <section class="work-group" id="published" aria-labelledby="published-heading">
+        <div class="work-head"><h3 id="published-heading">Published work</h3><p>Published work, with companion tracks, posters, and demos labeled in the citations. <span class="contribution-key">† Equal contribution.</span></p></div>
+        <ol class="papers">
     <li class="paper" id="work-watermark">
       <span class="paper-type">IVR</span>
       <div>
-        <h3><a href="https://doi.org/10.1145/3803437.3805553">The Watermark Paradox: How Provenance Verification Paves the Road to Camouflaged Backdoors</a></h3>
+        <h4><a href="https://doi.org/10.1145/3803437.3805553">The Watermark Paradox: How Provenance Verification Paves the Road to Camouflaged Backdoors</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran, Kisub Kim, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · Ideas, Visions and Reflections · pp. 1187–1191</p>
       </div>
@@ -87,7 +94,7 @@
     <li class="paper" id="work-spectra">
       <span class="paper-type">Poster</span>
       <div>
-        <h3><a href="https://doi.org/10.1145/3803437.3807384">SPECTRA: Specification-Oriented Static Analysis for Smart Contract Security and Behavioral Contract Inference</a></h3>
+        <h4><a href="https://doi.org/10.1145/3803437.3807384">SPECTRA: Specification-Oriented Static Analysis for Smart Contract Security and Behavioral Contract Inference</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Tianfeng Liang, Huaijin Ran, Md Maruf Hasan, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · pp. 1402–1403</p>
       </div>
@@ -95,7 +102,7 @@
     <li class="paper" id="work-constantguard">
       <span class="paper-type">Poster</span>
       <div>
-        <h3><a href="https://doi.org/10.1145/3803437.3806671">ConstantGuard: Lattice-Based Taint Analysis for Timing Side-Channel Risk Detection in C Code</a></h3>
+        <h4><a href="https://doi.org/10.1145/3803437.3806671">ConstantGuard: Lattice-Based Taint Analysis for Timing Side-Channel Risk Detection in C Code</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran, Tianfeng Liang, Md Maruf Hasan, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · pp. 1396–1397</p>
       </div>
@@ -103,7 +110,7 @@
     <li class="paper" id="work-wasmcert">
       <span class="paper-type">Poster</span>
       <div>
-        <h3><a href="https://doi.org/10.1145/3803437.3807382">WasmCert: A Reproducible Hybrid Security Analysis Prototype for WebAssembly</a></h3>
+        <h4><a href="https://doi.org/10.1145/3803437.3807382">WasmCert: A Reproducible Hybrid Security Analysis Prototype for WebAssembly</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Tianfeng Liang, Huaijin Ran, Md Maruf Hasan, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · pp. 1398–1399</p>
       </div>
@@ -111,7 +118,7 @@
     <li class="paper" id="work-sentryline">
       <span class="paper-type">Poster</span>
       <div>
-        <h3><a href="https://doi.org/10.1145/3837729.3839591">SentryLine: Reviewable Capability Traces for CPython Plugin Hosts</a></h3>
+        <h4><a href="https://doi.org/10.1145/3837729.3839591">SentryLine: Reviewable Capability Traces for CPython Plugin Hosts</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran</p>
         <p class="venue">SPLASH Companion 2026 · Joint SPLASH/ISSTA Posters · pp. 241–243</p>
       </div>
@@ -119,23 +126,23 @@
     <li class="paper" id="work-patch">
       <span class="paper-type">IVR</span>
       <div>
-        <h3><a href="https://doi.org/10.1145/3803437.3805552">Who Wrote This Patch? Toward Accountable Automated Program Repair</a></h3>
-        <p class="authors">Huaijin Ran, <strong>Haoyi Zhang</strong>, Kisub Kim, Xunzhu Tang</p>
+        <h4><a href="https://doi.org/10.1145/3803437.3805552">Who Wrote This Patch? Toward Accountable Automated Program Repair</a></h4>
+        <p class="authors">Huaijin Ran<sup class="contribution-mark" aria-label="Equal contribution">†</sup>, <strong>Haoyi Zhang</strong><sup class="contribution-mark" aria-label="Equal contribution">†</sup>, Kisub Kim, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · Ideas, Visions and Reflections · pp. 1182–1186</p>
       </div>
     </li>
     <li class="paper" id="work-eggesture">
       <span class="paper-type">Conference paper</span>
       <div>
-        <h3><a href="https://doi.org/10.1145/3664647.3681392">EGGesture: Entropy-Guided Vector Quantized Variational AutoEncoder for Co-Speech Gesture Generation</a></h3>
-        <p class="authors">Yiyong Xiao, Kai Shu, <strong>Haoyi Zhang</strong>, Baohua Yin, Wai Seng Cheang, Haoyang Wang, Jiechao Gao</p>
+        <h4><a href="https://doi.org/10.1145/3664647.3681392">EGGesture: Entropy-Guided Vector Quantized Variational AutoEncoder for Co-Speech Gesture Generation</a></h4>
+        <p class="authors">Yiyong Xiao<sup class="contribution-mark" aria-label="Equal contribution">†</sup>, Kai Shu<sup class="contribution-mark" aria-label="Equal contribution">†</sup>, <strong>Haoyi Zhang</strong><sup class="contribution-mark" aria-label="Equal contribution">†</sup>, Baohua Yin, Wai Seng Cheang, Haoyang Wang, Jiechao Gao</p>
         <p class="venue">ACM Multimedia 2024 · pp. 6113–6122</p>
       </div>
     </li>
     <li class="paper" id="work-msesta">
       <span class="paper-type">Journal article</span>
       <div>
-        <h3><a href="https://doi.org/10.1016/j.neunet.2026.109361">MSESTA: Multi-scale evolving spatial-temporal attention for long-term traffic prediction</a></h3>
+        <h4><a href="https://doi.org/10.1016/j.neunet.2026.109361">MSESTA: Multi-scale evolving spatial-temporal attention for long-term traffic prediction</a></h4>
         <p class="authors">Huaijin Ran, <strong>Haoyi Zhang</strong></p>
         <p class="venue">Neural Networks 205 (2027), Part A · article 109361</p>
       </div>
@@ -143,7 +150,7 @@
     <li class="paper" id="work-android-icse">
       <span class="paper-type">Poster</span>
       <div>
-        <h3><a href="https://doi.org/10.1145/3774748.3795659">Exploring Large Language Models for Compliance Violation Detection in Android Apps</a></h3>
+        <h4><a href="https://doi.org/10.1145/3774748.3795659">Exploring Large Language Models for Compliance Violation Detection in Android Apps</a></h4>
         <p class="authors">Huaijin Ran, <strong>Haoyi Zhang</strong>, Xunzhu Tang</p>
         <p class="venue">ICSE Companion 2026 · pp. 417–418</p>
       </div>
@@ -151,31 +158,52 @@
     <li class="paper" id="work-racecert">
       <span class="paper-type">Demo</span>
       <div>
-        <h3><a href="https://doi.org/10.1145/3795866.3848465">Demo: RaceCert: Exact Certificates for Two-Path Races</a></h3>
+        <h4><a href="https://doi.org/10.1145/3795866.3848465">Demo: RaceCert: Exact Certificates for Two-Path Races</a></h4>
         <p class="authors">Huaijin Ran, <strong>Haoyi Zhang</strong></p>
         <p class="venue">ACM MobiCom 2026 · pp. 1843–1845</p>
       </div>
     </li></ol>
-      <div class="section-head preprint-head">
-        <h2>Public preprints</h2><p>Preprints are listed separately from published work.</p>
-      </div>
-      <ol class="papers">
+      </section>
+      <section class="work-group" id="preprints" aria-labelledby="preprints-heading">
+        <div class="work-head"><h3 id="preprints-heading">Public manuscripts</h3><p>These are author-posted versions. Other manuscripts under anonymous review are not listed here.</p></div>
+        <ol class="papers">
     <li class="paper" id="work-gdpr-bench">
       <span class="paper-type">Preprint</span>
       <div>
-        <h3><a href="https://arxiv.org/abs/2511.00619">GDPR-Bench-Android: A Benchmark for Evaluating Automated GDPR Compliance Detection in Android</a></h3>
-        <p class="authors">Huaijin Ran, <strong>Haoyi Zhang</strong>, Xunzhu Tang</p>
-        <p class="venue">arXiv:2511.00619 · 2025</p>
+        <h4><a href="https://arxiv.org/abs/2511.00619">GDPR-Bench-Android: A Benchmark for Evaluating Automated GDPR Compliance Detection in Android</a></h4>
+        <p class="authors">Huaijin Ran<sup class="contribution-mark" aria-label="Equal contribution">†</sup>, <strong>Haoyi Zhang</strong><sup class="contribution-mark" aria-label="Equal contribution">†</sup>, Xunzhu Tang</p>
+        <p class="venue">arXiv:2511.00619 · 2025 <span class="work-status">Under revision</span></p>
       </div>
     </li>
     <li class="paper" id="work-android-compliance">
       <span class="paper-type">Preprint</span>
       <div>
-        <h3><a href="https://arxiv.org/abs/2511.00624">Can Large Language Models Detect Real-World Android Software Compliance Violations?</a></h3>
+        <h4><a href="https://arxiv.org/abs/2511.00624">Can Large Language Models Detect Real-World Android Software Compliance Violations?</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran, Xunzhu Tang</p>
         <p class="venue">arXiv:2511.00624 · 2025</p>
       </div>
+    </li>
+    <li class="paper" id="work-agents-slr">
+      <span class="paper-type">Public manuscript</span>
+      <div>
+        <h4><a href="https://www.researchgate.net/publication/397609631_Intelligent_Agents_for_Software_Engineering_A_Systematic_Literature_Review">Intelligent Agents for Software Engineering: A Systematic Literature Review</a></h4>
+        <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran, Xunzhu Tang</p>
+        <p class="venue">ResearchGate · 2025 <span class="work-status">Under revision</span></p>
+      </div>
     </li></ol>
+      </section>
+      <section class="work-group" id="src" aria-labelledby="src-heading">
+        <div class="work-head"><h3 id="src-heading">Student Research Competition</h3></div>
+        <ol class="papers">
+    <li class="paper" id="work-waymasks">
+      <span class="paper-type">SRC</span>
+      <div>
+        <h4>Way Masks Are Not Isolation: Certifying and Repairing Cache Replacement State</h4>
+        <p class="authors"><strong>Haoyi Zhang</strong></p>
+        <p class="venue">IEEE/ACM MICRO 2026 · ACM Student Research Competition <span class="work-status">Accepted</span> · <a href="https://www.microarch.org/micro59/submit/src.php">Competition details</a></p>
+      </div>
+    </li></ol>
+      </section>
     </section>
     <section class="section collaboration" id="collaboration" aria-labelledby="collaboration-heading">
       <div class="section-head"><h2 id="collaboration-heading">Industry collaboration</h2><p>I contributed to open-weight models at AutoTrust AI Lab, including the releases below.</p></div>
