@@ -2,7 +2,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { links, models, publications, preprints, equalContribution, competitions, copy } = require('./content.cjs');
+const { links, models, publications, preprints, equalContribution, competitions, resources, shortCourses, copy } = require('./content.cjs');
 const origin = 'https://haoyi-zhang.github.io/';
 const e = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const anchor = (url, title, cls = '') => '<a' + (cls ? ' class="' + cls + '"' : '') + ' href="' + e(url) + '">' + e(title) + '</a>';
@@ -33,13 +33,19 @@ function workRow(row, words, source = 'publication') {
     return name + (equal.has(n) ? '<sup class="contribution-mark" aria-label="' + e(words.contribution) + '">†</sup>' : '');
   }).join(', ');
   const titleMarkup = source === 'competition' ? e(title) : anchor(source === 'publication' ? 'https://doi.org/' + ref : ref, title);
+  const related = [
+    ...(source === 'competition' ? [[words.competitionLink, ref]] : []),
+    ...(resources[id] || []).map(([key, url]) => [words.resource[key], url]),
+  ];
   return `
     <li class="paper" id="work-${id}">
       <span class="paper-type">${e(words.label[kind])}</span>
       <div>
-        <h4>${titleMarkup}</h4>
+        <h4 lang="en">${titleMarkup}</h4>
         <p class="authors">${byline}</p>
-        <p class="venue">${e(venue)}${status ? ' <span class="work-status">' + e(words.status[status]) + '</span>' : ''}${source === 'competition' ? ' · ' + anchor(ref, words.competitionLink) : ''}</p>
+        <p class="venue">${e(venue)}${status ? ' <span class="work-status">' + e(words.status[status]) + '</span>' : ''}</p>
+        ${words.notes[id] ? '<p class="work-note">' + e(words.notes[id]) + '</p>' : ''}
+        ${related.length ? '<ul class="resource-links">' + related.map(([label,url]) => '<li>' + anchor(url,label) + '</li>').join('') + '</ul>' : ''}
       </div>
     </li>`;
 }
@@ -61,6 +67,9 @@ function page(lang) {
   <meta property="og:description" content="${e(w.tagline)}">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="${canonical}">
+  <meta property="og:locale" content="${zh ? 'zh_CN' : 'en_US'}">
+  <meta property="profile:first_name" content="Haoyi">
+  <meta property="profile:last_name" content="Zhang">
   <link rel="canonical" href="${canonical}">
   <link rel="alternate" hreflang="en" href="${origin}">
   <link rel="alternate" hreflang="zh-Hans" href="${origin}zh.html">
@@ -89,9 +98,9 @@ function page(lang) {
         <p class="tagline">${e(w.tagline)}</p>
         <p class="intro">${e(w.intro)}</p>
         <div class="profile-links">
-          ${anchor(links.scholar,'Google Scholar','primary-link')}
+          ${anchor('#research', w.selectedLink,'primary-link')}
+          ${anchor(links.scholar,'Google Scholar')}
           ${anchor(links.github,'GitHub')}
-          ${anchor(links.orcid,'ORCID')}
         </div>
       </div>
       <aside class="degree-card" aria-label="${e(w.snapshot)}">
@@ -109,7 +118,7 @@ function page(lang) {
         <p>${e(w.researchIntro)}</p>
       </div>
       <ol class="interests">
-        ${w.work.map(([name, description, work], i) => `<li><span class="index" aria-hidden="true">0${i+1}</span><div><h3>${e(name)}</h3><p>${e(description)}</p></div>${anchor('#work-' + work,w.read + ' ↓','related-link')}</li>`).join('')}
+        ${w.work.map(([name, description, projects], i) => `<li><span class="index" aria-hidden="true">0${i+1}</span><div><h3>${e(name)}</h3><p>${e(description)}</p><ul class="resource-links">${projects.map(([label,id]) => '<li>' + anchor('#work-' + id,label) + '</li>').join('')}</ul></div></li>`).join('')}
       </ol>
     </section>
     <section class="section education" id="education" aria-labelledby="education-heading">
@@ -123,21 +132,44 @@ function page(lang) {
           <p class="muted">${e(w.study)}</p>
         </div>
       </div>
+      <section class="training" id="short-courses" aria-labelledby="training-heading">
+        <h3 id="training-heading">${e(w.training)}</h3>
+        <div>
+          <p class="training-title">${anchor(shortCourses.url, w.trainingTitle)}</p>
+          <p class="venue">${e(shortCourses.organizer)}</p>
+          <ul class="course-list">
+            ${shortCourses.tracks.map(([name,when]) => `<li><span lang="en">${e(name)}</span><span class="venue">${e(when[zh ? 1 : 0])}</span></li>`).join('')}
+          </ul>
+        </div>
+      </section>
     </section>
     <section class="section" id="publications" aria-labelledby="publications-heading">
       <div class="section-head"><h2 id="publications-heading">${e(w.nav[2])}</h2></div>
       <nav class="work-nav" aria-label="${e(w.resultsNav)}">
         ${anchor('#published', w.published)}
         ${anchor('#preprints', w.preprints)}
+        ${anchor('#talks', w.talks)}
         ${anchor('#src', w.competition)}
       </nav>
       <section class="work-group" id="published" aria-labelledby="published-heading">
-        <div class="work-head"><h3 id="published-heading">${e(w.published)}</h3><p>${e(w.publicationIntro)} <span class="contribution-key">† ${e(w.contribution)}.</span></p></div>
+        <div class="work-head"><h3 id="published-heading">${e(w.published)}</h3><p><span class="contribution-key">† ${e(w.contribution)}.</span></p></div>
         <ol class="papers">${publications.map(row => workRow(row,w)).join('')}</ol>
       </section>
       <section class="work-group" id="preprints" aria-labelledby="preprints-heading">
         <div class="work-head"><h3 id="preprints-heading">${e(w.preprints)}</h3><p>${e(w.preprintIntro)}</p></div>
         <ol class="papers">${preprints.map(row => workRow(row,w,'public')).join('')}</ol>
+      </section>
+      <section class="work-group" id="talks" aria-labelledby="talks-heading">
+        <div class="work-head"><h3 id="talks-heading">${e(w.talks)}</h3></div>
+        <article class="paper" id="talk-ranlp">
+          <span class="paper-type">RANLP</span>
+          <div>
+            <h4>${e(w.ranlpTitle)}</h4>
+            <p class="venue">${e(w.ranlpEvent)}</p>
+            <p class="work-note">${e(w.ranlpDescription)}</p>
+            <ul class="resource-links"><li>${anchor('#work-gdpr-bench', w.ranlpLink)}</li></ul>
+          </div>
+        </article>
       </section>
       <section class="work-group" id="src" aria-labelledby="src-heading">
         <div class="work-head"><h3 id="src-heading">${e(w.competition)}</h3></div>
@@ -156,7 +188,7 @@ function page(lang) {
   <footer class="wrap footer"><span>${e(w.name)}</span>${anchor('#top',w.back + ' ↑')}</footer>
 </body>
 </html>
-`;
+`.replace(/^[ \t]+\n/gm, '');
 }
 
 fs.writeFileSync(path.join(__dirname,'index.html'), page('en'));

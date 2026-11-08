@@ -10,6 +10,9 @@
   <meta property="og:description" content="Software analysis, security, and AI-assisted development">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://haoyi-zhang.github.io/">
+  <meta property="og:locale" content="en_US">
+  <meta property="profile:first_name" content="Haoyi">
+  <meta property="profile:last_name" content="Zhang">
   <link rel="canonical" href="https://haoyi-zhang.github.io/">
   <link rel="alternate" hreflang="en" href="https://haoyi-zhang.github.io/">
   <link rel="alternate" hreflang="zh-Hans" href="https://haoyi-zhang.github.io/zh.html">
@@ -38,9 +41,9 @@
         <p class="tagline">Software analysis, security, and AI-assisted development</p>
         <p class="intro">I study how to check what software actually does. I am interested in whether code follows access rules, whether a security patch breaks legitimate behavior, and what evidence makes AI-generated changes easier to review.</p>
         <div class="profile-links">
-          <a class="primary-link" href="https://scholar.google.com/citations?user=7-zJFCcAAAAJ&amp;hl=en">Google Scholar</a>
+          <a class="primary-link" href="#research">Explore selected research</a>
+          <a href="https://scholar.google.com/citations?user=7-zJFCcAAAAJ&amp;hl=en">Google Scholar</a>
           <a href="https://github.com/Haoyi-Zhang">GitHub</a>
-          <a href="https://orcid.org/0009-0009-3693-786X">ORCID</a>
         </div>
       </div>
       <aside class="degree-card" aria-label="Education">
@@ -55,10 +58,10 @@
     <section class="section" id="research" aria-labelledby="research-heading">
       <div class="section-head">
         <h2 id="research-heading">Research</h2>
-        <p>A common question across my work: what can we check before we trust a software change?</p>
+        <p>I use program analysis, benchmarks, and executable checks to find out what software does and where its guarantees fall short.</p>
       </div>
       <ol class="interests">
-        <li><span class="index" aria-hidden="true">01</span><div><h3>Program analysis and software security</h3><p>I use program analysis and executable checks to study authorization rules, security patches, and what changes when a program is run in a different context.</p></div><a class="related-link" href="#work-spectra">Related work ↓</a></li><li><span class="index" aria-hidden="true">02</span><div><h3>AI-assisted software development</h3><p>I am interested in how developers can trace, test, and review AI-generated changes, including automated repairs and code provenance.</p></div><a class="related-link" href="#work-watermark">Related work ↓</a></li><li><span class="index" aria-hidden="true">03</span><div><h3>Software compliance and evaluation</h3><p>I build benchmarks that make compliance claims testable and examine where automated methods miss violations in real software.</p></div><a class="related-link" href="#work-gdpr-bench">Related work ↓</a></li>
+        <li><span class="index" aria-hidden="true">01</span><div><h3>Software security and program analysis</h3><p>How can we recover useful security specifications when the code is all we have?</p><ul class="resource-links"><li><a href="#work-spectra">SPECTRA</a></li><li><a href="#work-wasmcert">WasmCert</a></li></ul></div></li><li><span class="index" aria-hidden="true">02</span><div><h3>AI-assisted software engineering</h3><p>What can provenance tell us about a generated change, and what still needs testing?</p><ul class="resource-links"><li><a href="#work-watermark">The Watermark Paradox</a></li><li><a href="#work-patch">Who Wrote This Patch?</a></li></ul></div></li><li><span class="index" aria-hidden="true">03</span><div><h3>Software compliance and evaluation</h3><p>What do language models and static analyzers miss when they look for violations in real Android code?</p><ul class="resource-links"><li><a href="#work-gdpr-bench">GDPR-Bench-Android</a></li><li><a href="#work-android-compliance">Android compliance study</a></li></ul></div></li><li><span class="index" aria-hidden="true">04</span><div><h3>Systems and verification</h3><p>What evidence can we provide about the behavior of systems when execution order or shared state matters?</p><ul class="resource-links"><li><a href="#work-racecert">RaceCert</a></li><li><a href="#work-waymasks">Way Masks Are Not Isolation</a></li></ul></div></li>
       </ol>
     </section>
     <section class="section education" id="education" aria-labelledby="education-heading">
@@ -72,21 +75,32 @@
           <p class="muted">Completed the programme at Xi’an Jiaotong-Liverpool University (XJTLU) in Suzhou, China. The degree was awarded by the University of Liverpool.</p>
         </div>
       </div>
+      <section class="training" id="short-courses" aria-labelledby="training-heading">
+        <h3 id="training-heading">Short courses</h3>
+        <div>
+          <p class="training-title"><a href="https://www.oxfordml.school/2025-replearning">Oxford Machine Learning Summer School (OxML 2025)</a></p>
+          <p class="venue">AI for Global Goals</p>
+          <ul class="course-list">
+            <li><span lang="en">MLx Representation Learning &amp; Generative AI</span><span class="venue">7–10 August 2025 · In person, Oxford</span></li><li><span lang="en">MLx Generative AI</span><span class="venue">5–7 June 2025 · Online</span></li><li><span lang="en">MLx Fundamentals</span><span class="venue">1–2 and 8–9 May 2025 · Online</span></li>
+          </ul>
+        </div>
+      </section>
     </section>
     <section class="section" id="publications" aria-labelledby="publications-heading">
       <div class="section-head"><h2 id="publications-heading">Publications</h2></div>
       <nav class="work-nav" aria-label="Research outputs">
         <a href="#published">Published work</a>
         <a href="#preprints">Public manuscripts</a>
+        <a href="#talks">Research talks</a>
         <a href="#src">Student Research Competition</a>
       </nav>
       <section class="work-group" id="published" aria-labelledby="published-heading">
-        <div class="work-head"><h3 id="published-heading">Published work</h3><p>Published work, with companion tracks, posters, and demos labeled in the citations. <span class="contribution-key">† Equal contribution.</span></p></div>
+        <div class="work-head"><h3 id="published-heading">Published work</h3><p><span class="contribution-key">† Equal contribution.</span></p></div>
         <ol class="papers">
     <li class="paper" id="work-watermark">
       <span class="paper-type">IVR</span>
       <div>
-        <h4><a href="https://doi.org/10.1145/3803437.3805553">The Watermark Paradox: How Provenance Verification Paves the Road to Camouflaged Backdoors</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1145/3803437.3805553">The Watermark Paradox: How Provenance Verification Paves the Road to Camouflaged Backdoors</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran, Kisub Kim, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · Ideas, Visions and Reflections · pp. 1187–1191</p>
       </div>
@@ -94,15 +108,17 @@
     <li class="paper" id="work-spectra">
       <span class="paper-type">Poster</span>
       <div>
-        <h4><a href="https://doi.org/10.1145/3803437.3807384">SPECTRA: Specification-Oriented Static Analysis for Smart Contract Security and Behavioral Contract Inference</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1145/3803437.3807384">SPECTRA: Specification-Oriented Static Analysis for Smart Contract Security and Behavioral Contract Inference</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Tianfeng Liang, Huaijin Ran, Md Maruf Hasan, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · pp. 1402–1403</p>
+        <p class="work-note">Uses abstract interpretation to infer behavioral specifications for smart contracts.</p>
+        <ul class="resource-links"><li><a href="https://www.ndss-symposium.org/wp-content/uploads/ndss26-poster-21.pdf">Earlier NDSS 2026 poster (PDF)</a></li></ul>
       </div>
     </li>
     <li class="paper" id="work-constantguard">
       <span class="paper-type">Poster</span>
       <div>
-        <h4><a href="https://doi.org/10.1145/3803437.3806671">ConstantGuard: Lattice-Based Taint Analysis for Timing Side-Channel Risk Detection in C Code</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1145/3803437.3806671">ConstantGuard: Lattice-Based Taint Analysis for Timing Side-Channel Risk Detection in C Code</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran, Tianfeng Liang, Md Maruf Hasan, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · pp. 1396–1397</p>
       </div>
@@ -110,7 +126,7 @@
     <li class="paper" id="work-wasmcert">
       <span class="paper-type">Poster</span>
       <div>
-        <h4><a href="https://doi.org/10.1145/3803437.3807382">WasmCert: A Reproducible Hybrid Security Analysis Prototype for WebAssembly</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1145/3803437.3807382">WasmCert: A Reproducible Hybrid Security Analysis Prototype for WebAssembly</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Tianfeng Liang, Huaijin Ran, Md Maruf Hasan, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · pp. 1398–1399</p>
       </div>
@@ -118,7 +134,7 @@
     <li class="paper" id="work-sentryline">
       <span class="paper-type">Poster</span>
       <div>
-        <h4><a href="https://doi.org/10.1145/3837729.3839591">SentryLine: Reviewable Capability Traces for CPython Plugin Hosts</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1145/3837729.3839591">SentryLine: Reviewable Capability Traces for CPython Plugin Hosts</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran</p>
         <p class="venue">SPLASH Companion 2026 · Joint SPLASH/ISSTA Posters · pp. 241–243</p>
       </div>
@@ -126,7 +142,7 @@
     <li class="paper" id="work-patch">
       <span class="paper-type">IVR</span>
       <div>
-        <h4><a href="https://doi.org/10.1145/3803437.3805552">Who Wrote This Patch? Toward Accountable Automated Program Repair</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1145/3803437.3805552">Who Wrote This Patch? Toward Accountable Automated Program Repair</a></h4>
         <p class="authors">Huaijin Ran<sup class="contribution-mark" aria-label="Equal contribution">†</sup>, <strong>Haoyi Zhang</strong><sup class="contribution-mark" aria-label="Equal contribution">†</sup>, Kisub Kim, Xunzhu Tang</p>
         <p class="venue">FSE Companion 2026 · Ideas, Visions and Reflections · pp. 1182–1186</p>
       </div>
@@ -134,7 +150,7 @@
     <li class="paper" id="work-eggesture">
       <span class="paper-type">Conference paper</span>
       <div>
-        <h4><a href="https://doi.org/10.1145/3664647.3681392">EGGesture: Entropy-Guided Vector Quantized Variational AutoEncoder for Co-Speech Gesture Generation</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1145/3664647.3681392">EGGesture: Entropy-Guided Vector Quantized Variational AutoEncoder for Co-Speech Gesture Generation</a></h4>
         <p class="authors">Yiyong Xiao<sup class="contribution-mark" aria-label="Equal contribution">†</sup>, Kai Shu<sup class="contribution-mark" aria-label="Equal contribution">†</sup>, <strong>Haoyi Zhang</strong><sup class="contribution-mark" aria-label="Equal contribution">†</sup>, Baohua Yin, Wai Seng Cheang, Haoyang Wang, Jiechao Gao</p>
         <p class="venue">ACM Multimedia 2024 · pp. 6113–6122</p>
       </div>
@@ -142,7 +158,7 @@
     <li class="paper" id="work-msesta">
       <span class="paper-type">Journal article</span>
       <div>
-        <h4><a href="https://doi.org/10.1016/j.neunet.2026.109361">MSESTA: Multi-scale evolving spatial-temporal attention for long-term traffic prediction</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1016/j.neunet.2026.109361">MSESTA: Multi-scale evolving spatial-temporal attention for long-term traffic prediction</a></h4>
         <p class="authors">Huaijin Ran, <strong>Haoyi Zhang</strong></p>
         <p class="venue">Neural Networks 205 (2027), Part A · article 109361</p>
       </div>
@@ -150,7 +166,7 @@
     <li class="paper" id="work-android-icse">
       <span class="paper-type">Poster</span>
       <div>
-        <h4><a href="https://doi.org/10.1145/3774748.3795659">Exploring Large Language Models for Compliance Violation Detection in Android Apps</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1145/3774748.3795659">Exploring Large Language Models for Compliance Violation Detection in Android Apps</a></h4>
         <p class="authors">Huaijin Ran, <strong>Haoyi Zhang</strong>, Xunzhu Tang</p>
         <p class="venue">ICSE Companion 2026 · pp. 417–418</p>
       </div>
@@ -158,27 +174,31 @@
     <li class="paper" id="work-racecert">
       <span class="paper-type">Demo</span>
       <div>
-        <h4><a href="https://doi.org/10.1145/3795866.3848465">Demo: RaceCert: Exact Certificates for Two-Path Races</a></h4>
+        <h4 lang="en"><a href="https://doi.org/10.1145/3795866.3848465">Demo: RaceCert: Exact Certificates for Two-Path Races</a></h4>
         <p class="authors">Huaijin Ran, <strong>Haoyi Zhang</strong></p>
         <p class="venue">ACM MobiCom 2026 · pp. 1843–1845</p>
+        <p class="work-note">A research prototype for computing exact certificates for two-path races.</p>
+        <ul class="resource-links"><li><a href="https://www.sigmobile.org/mobicom/2026/accepted_demos.html">MobiCom demo listing</a></li></ul>
       </div>
     </li></ol>
       </section>
       <section class="work-group" id="preprints" aria-labelledby="preprints-heading">
-        <div class="work-head"><h3 id="preprints-heading">Public manuscripts</h3><p>These are author-posted versions. Other manuscripts under anonymous review are not listed here.</p></div>
+        <div class="work-head"><h3 id="preprints-heading">Public manuscripts</h3><p>Public preprints and author-posted manuscripts, separate from the publication record.</p></div>
         <ol class="papers">
     <li class="paper" id="work-gdpr-bench">
       <span class="paper-type">Preprint</span>
       <div>
-        <h4><a href="https://arxiv.org/abs/2511.00619">GDPR-Bench-Android: A Benchmark for Evaluating Automated GDPR Compliance Detection in Android</a></h4>
+        <h4 lang="en"><a href="https://arxiv.org/abs/2511.00619">GDPR-Bench-Android: A Benchmark for Evaluating Automated GDPR Compliance Detection in Android</a></h4>
         <p class="authors">Huaijin Ran<sup class="contribution-mark" aria-label="Equal contribution">†</sup>, <strong>Haoyi Zhang</strong><sup class="contribution-mark" aria-label="Equal contribution">†</sup>, Xunzhu Tang</p>
         <p class="venue">arXiv:2511.00619 · 2025 <span class="work-status">Under revision</span></p>
+        <p class="work-note">An annotated Android benchmark for locating GDPR violations and classifying them by provision, with static-analysis and language-model baselines.</p>
+        <ul class="resource-links"><li><a href="https://github.com/Haoyi-Zhang/GDPR-Bench-Android">Code and data</a></li><li><a href="#talks">Related talk</a></li></ul>
       </div>
     </li>
     <li class="paper" id="work-android-compliance">
       <span class="paper-type">Preprint</span>
       <div>
-        <h4><a href="https://arxiv.org/abs/2511.00624">Can Large Language Models Detect Real-World Android Software Compliance Violations?</a></h4>
+        <h4 lang="en"><a href="https://arxiv.org/abs/2511.00624">Can Large Language Models Detect Real-World Android Software Compliance Violations?</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran, Xunzhu Tang</p>
         <p class="venue">arXiv:2511.00624 · 2025</p>
       </div>
@@ -186,11 +206,23 @@
     <li class="paper" id="work-agents-slr">
       <span class="paper-type">Public manuscript</span>
       <div>
-        <h4><a href="https://www.researchgate.net/publication/397609631_Intelligent_Agents_for_Software_Engineering_A_Systematic_Literature_Review">Intelligent Agents for Software Engineering: A Systematic Literature Review</a></h4>
+        <h4 lang="en"><a href="https://www.researchgate.net/publication/397609631_Intelligent_Agents_for_Software_Engineering_A_Systematic_Literature_Review">Intelligent Agents for Software Engineering: A Systematic Literature Review</a></h4>
         <p class="authors"><strong>Haoyi Zhang</strong>, Huaijin Ran, Xunzhu Tang</p>
         <p class="venue">ResearchGate · 2025 <span class="work-status">Under revision</span></p>
       </div>
     </li></ol>
+      </section>
+      <section class="work-group" id="talks" aria-labelledby="talks-heading">
+        <div class="work-head"><h3 id="talks-heading">Research talks</h3></div>
+        <article class="paper" id="talk-ranlp">
+          <span class="paper-type">RANLP</span>
+          <div>
+            <h4>Benchmarking automated compliance detection</h4>
+            <p class="venue">Recent Advances in Natural Language Processing (RANLP) · Research presentation</p>
+            <p class="work-note">I presented work on evaluating automated compliance detection. The related Android benchmark tests whether tools can locate potential GDPR violations in code and identify which provisions apply.</p>
+            <ul class="resource-links"><li><a href="#work-gdpr-bench">Related benchmark</a></li></ul>
+          </div>
+        </article>
       </section>
       <section class="work-group" id="src" aria-labelledby="src-heading">
         <div class="work-head"><h3 id="src-heading">Student Research Competition</h3></div>
@@ -198,9 +230,11 @@
     <li class="paper" id="work-waymasks">
       <span class="paper-type">SRC</span>
       <div>
-        <h4>Way Masks Are Not Isolation: Certifying and Repairing Cache Replacement State</h4>
+        <h4 lang="en">Way Masks Are Not Isolation: Certifying and Repairing Cache Replacement State</h4>
         <p class="authors"><strong>Haoyi Zhang</strong></p>
-        <p class="venue">IEEE/ACM MICRO 2026 · ACM Student Research Competition <span class="work-status">Accepted</span> · <a href="https://www.microarch.org/micro59/submit/src.php">Competition details</a></p>
+        <p class="venue">IEEE/ACM MICRO 2026 · ACM Student Research Competition <span class="work-status">Abstract accepted</span></p>
+        <p class="work-note">Examines why way masks alone do not isolate cache replacement state, and how to certify and repair that state.</p>
+        <ul class="resource-links"><li><a href="https://www.microarch.org/micro59/submit/src.php">Competition details</a></li></ul>
       </div>
     </li></ol>
       </section>
