@@ -1,0 +1,120 @@
+:root {
+  color-scheme: light;
+  --ink: #14243b;
+  --body: #344358;
+  --muted: #4e6077;
+  --accent: #205996;
+  --line: #dce5ee;
+  --soft: #edf4fc;
+  --canvas: #fafcff;
+  --heading: Georgia, "Noto Serif SC", "Songti SC", SimSun, serif;
+  font-family: system-ui, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  background: var(--canvas);
+  color: var(--body);
+  font-synthesis: none;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; line-height: 1.6; }
+a { color: var(--accent); text-underline-offset: .2em; }
+a:hover { text-decoration-thickness: .12em; }
+a:focus-visible { outline: 2px solid #225a92; outline-offset: 4px; border-radius: 2px; }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { color: var(--ink); line-height: 1.18; }
+strong { color: var(--ink); }
+.wrap { width: min(1120px, calc(100% - 64px)); margin-inline: auto; }
+.skip-link { position: absolute; left: 16px; top: -80px; z-index: 2; padding: 8px 14px; background: white; }
+.skip-link:focus { top: 12px; }
+.site-header { background: #fff; border-bottom: 1px solid var(--line); }
+.header-row { display: flex; align-items: center; gap: 26px; min-height: 72px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; flex-shrink: 0; color: var(--ink); font-weight: 720; text-decoration: none; }
+.brand-mark { display: inline-grid; width: 32px; height: 32px; place-items: center; border-radius: 7px; color: #fff; background: #205486; font-size: .73rem; letter-spacing: .035em; }
+.nav { display: flex; gap: 24px; margin-left: auto; }
+.nav a { font-size: .91rem; color: var(--body); font-weight: 560; text-decoration: none; }
+.nav a:hover { text-decoration: underline; }
+.languages { display: flex; gap: 3px; border: 1px solid var(--line); border-radius: 6px; padding: 3px; flex-shrink: 0; }
+.languages a { text-decoration: none; padding: 3px 8px; color: var(--muted); font-size: .8rem; border-radius: 4px; }
+.languages [aria-current] { background: var(--soft); color: var(--accent); font-weight: 700; }
+.hero { display: grid; grid-template-columns: minmax(0, 1fr) 320px; align-items: center; gap: 64px; padding-block: 79px 73px; }
+.eyebrow, .index, .paper-type { color: var(--accent); font-weight: 710; font-size: .72rem; text-transform: uppercase; letter-spacing: .105em; }
+.hero h1 { margin-block: 7px 14px; font: 600 clamp(3rem, 6vw, 5.25rem)/1.04 var(--heading); letter-spacing: -.045em; }
+.hero h1 span { display: block; font: 550 1.25rem/1.35 system-ui, sans-serif; letter-spacing: 0; margin-top: 10px; color: var(--muted); }
+.tagline { font-size: clamp(1.05rem, 2.1vw, 1.38rem); font-weight: 660; color: var(--ink); }
+.intro { max-width: 60ch; margin-top: 13px; font-size: 1.03rem; line-height: 1.72; }
+.profile-links { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 22px; margin-top: 22px; }
+.profile-links a { font-size: .91rem; font-weight: 650; }
+.primary-link { background: #205486; color: #fff; padding: 8px 14px; border-radius: 6px; text-decoration: none; }
+.primary-link:hover { background: #173d64; text-decoration: underline; }
+.degree-card { padding: 25px 27px 24px; border: 1px solid #cedded; border-left: 3px solid #3c71a5; border-radius: 8px; background: #edf4fc; }
+.degree-university { font: 600 1.64rem/1.14 var(--heading); color: var(--ink); margin-block: 11px 5px; }
+.degree-honors { color: var(--accent); font-weight: 650; font-size: .9rem; }
+.degree-rule { background: #cfdeee; height: 1px; margin-block: 15px; }
+.degree-campus { font-size: .88rem; color: var(--muted); }
+.card-link { display: inline-block; margin-top: 13px; font-weight: 650; font-size: .85rem; }
+.section { padding-block: 41px 42px; border-top: 1px solid var(--line); scroll-margin-top: 15px; }
+.section-head { margin-bottom: 22px; }
+.section-head h2 { font: 600 clamp(1.75rem, 3.8vw, 2.35rem)/1.12 var(--heading); letter-spacing: -.025em; }
+.section-head p { margin-top: 7px; color: var(--muted); }
+.interests, .papers, .model-list { margin: 0; padding: 0; list-style: none; }
+.interests li { display: grid; grid-template-columns: 34px minmax(0,1fr) auto; align-items: start; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.interests li:last-child { border-bottom: 0; padding-bottom: 0; }
+.interests h3, .education h3 { font-size: 1.05rem; font-weight: 720; }
+.interests p { max-width: 78ch; margin-top: 5px; }
+.index { padding-top: 1px; }
+.related-link { font-size: .85rem; padding-top: 1px; white-space: nowrap; }
+.education-row { display: grid; grid-template-columns: minmax(160px, .3fr) minmax(0, 1fr); gap: 25px; padding: 17px 0 5px; }
+.time, .venue, .muted { color: var(--muted); }
+.time { font-size: .93rem; font-variant-numeric: tabular-nums; }
+.degree-name { margin-top: 6px; }
+.honors { color: var(--accent); font-size: .9rem; font-weight: 700; margin-block: 3px 8px; }
+.paper { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 18px; padding: 14px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 22px; }
+.paper:last-child { border-bottom: 0; }
+.paper:target { background: var(--soft); outline: 1px solid #d6e5f4; outline-offset: 6px; }
+.paper-type { padding-top: 2px; }
+.paper h3 { font-size: 1.01rem; line-height: 1.35; }
+.paper h3 a { color: var(--ink); text-decoration: none; }
+.paper h3 a:hover { color: var(--accent); text-decoration: underline; }
+.authors, .venue { font-size: .89rem; line-height: 1.45; }
+.authors { margin-top: 5px; }
+.venue { margin-top: 3px; }
+.preprint-head { margin-top: 29px; padding-top: 26px; border-top: 1px solid var(--line); }
+.preprint-head h2 { font-size: 1.62rem; }
+.model-list { display: flex; flex-wrap: wrap; gap: 10px; }
+.model-list a { display: block; padding: 7px 12px; border: 1px solid #cfdeee; border-radius: 6px; background: var(--soft); font-size: .88rem; font-weight: 650; text-decoration: none; }
+.model-list a:hover { text-decoration: underline; }
+.contact .profile-links { margin-top: 0; }
+.footer { display: flex; justify-content: space-between; padding-block: 17px 31px; border-top: 1px solid var(--line); color: var(--muted); font-size: .87rem; }
+.not-found { padding-block: 75px; }
+.not-found h1 { margin: 12px 0; font: 600 2.5rem var(--heading); }
+.not-found p { margin-top: 10px; }
+[lang="zh-Hans"] .eyebrow, [lang="zh-Hans"] .paper-type { letter-spacing: .055em; }
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr) 255px; gap: 26px; padding-block: 55px 49px; }
+  .degree-card { padding: 20px; }
+  .degree-university { font-size: 1.42rem; }
+  .header-row { gap: 17px; }
+  .nav { gap: 14px; }
+}
+@media (max-width: 660px) {
+  .wrap { width: calc(100% - 34px); }
+  .header-row { flex-wrap: wrap; justify-content: space-between; gap: 10px; padding-block: 11px; }
+  .nav { order: 3; width: 100%; justify-content: space-between; margin: 0; gap: 8px; }
+  .nav a { font-size: .82rem; }
+  .hero { grid-template-columns: 1fr; gap: 24px; padding-block: 34px 33px; }
+  .hero h1 { font-size: clamp(2.75rem, 11.8vw, 4.2rem); }
+  .tagline { font-size: 1.04rem; }
+  .intro { font-size: .96rem; }
+  .degree-card { padding: 17px 20px; }
+  .section { padding-block: 31px; }
+  .interests li { grid-template-columns: 24px minmax(0,1fr); gap: 6px 9px; }
+  .related-link { grid-column: 2; }
+  .education-row { grid-template-columns: 1fr; gap: 7px; padding-top: 0; }
+  .paper { grid-template-columns: 1fr; gap: 3px; }
+  .paper h3 { font-size: .98rem; }
+}
+@media print {
+  :root { background: #fff; }
+  .wrap { width: 100%; }
+  .site-header, .footer, .related-link { display: none; }
+  .hero, .section { padding-block: 18px; }
+  .paper, .education-row, .degree-card { break-inside: avoid; }
+}
