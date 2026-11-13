@@ -2,7 +2,7 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
-const { links, models, publications, preprints, equalContribution, competitions, resources, shortCourses, copy } = require('./content.cjs');
+const { links, models, publications, accepted, preprints, equalContribution, competitions, resources, shortCourses, copy } = require('./content.cjs');
 const origin = 'https://haoyi-zhang.github.io/';
 const e = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const anchor = (url, title, cls = '') => '<a' + (cls ? ' class="' + cls + '"' : '') + ' href="' + e(url) + '">' + e(title) + '</a>';
@@ -14,8 +14,8 @@ const labelProfiles = [
 ];
 const sections = ['research','education','publications','contact'];
 
-const records = new Map([...publications, ...preprints, ...competitions].map(row => [row[0], row]));
-if (records.size !== publications.length + preprints.length + competitions.length) {
+const records = new Map([...publications, ...accepted, ...preprints, ...competitions].map(row => [row[0], row]));
+if (records.size !== publications.length + accepted.length + preprints.length + competitions.length) {
   throw new Error('Duplicate research output ID');
 }
 for (const [id, names] of Object.entries(equalContribution)) {
@@ -32,7 +32,7 @@ function workRow(row, words, source = 'publication') {
     const name = n === 'Haoyi Zhang' ? '<strong>' + e(n) + '</strong>' : e(n);
     return name + (equal.has(n) ? '<sup class="contribution-mark" aria-label="' + e(words.contribution) + '">†</sup>' : '');
   }).join(', ');
-  const titleMarkup = source === 'competition' ? e(title) : anchor(source === 'publication' ? 'https://doi.org/' + ref : ref, title);
+  const titleMarkup = source === 'competition' || !ref ? e(title) : anchor(source === 'publication' ? 'https://doi.org/' + ref : ref, title);
   const related = [
     ...(source === 'competition' ? [[words.competitionLink, ref]] : []),
     ...(resources[id] || []).map(([key, url]) => [words.resource[key], url]),
@@ -146,11 +146,16 @@ function page(lang) {
     <section class="section" id="publications" aria-labelledby="publications-heading">
       <div class="section-head"><h2 id="publications-heading">${e(w.nav[2])}</h2></div>
       <nav class="work-nav" aria-label="${e(w.resultsNav)}">
+        ${anchor('#accepted', w.accepted)}
         ${anchor('#published', w.published)}
         ${anchor('#preprints', w.preprints)}
         ${anchor('#talks', w.talks)}
         ${anchor('#src', w.competition)}
       </nav>
+      <section class="work-group" id="accepted" aria-labelledby="accepted-heading">
+        <div class="work-head"><h3 id="accepted-heading">${e(w.accepted)}</h3></div>
+        <ol class="papers">${accepted.map(row => workRow(row,w,'accepted')).join('')}</ol>
+      </section>
       <section class="work-group" id="published" aria-labelledby="published-heading">
         <div class="work-head"><h3 id="published-heading">${e(w.published)}</h3><p><span class="contribution-key">† ${e(w.contribution)}.</span></p></div>
         <ol class="papers">${publications.map(row => workRow(row,w)).join('')}</ol>

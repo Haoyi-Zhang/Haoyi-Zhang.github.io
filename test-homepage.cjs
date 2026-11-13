@@ -3,7 +3,7 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { publications, preprints, competitions, resources, shortCourses, equalContribution, copy } = require('./content.cjs');
+const { publications, accepted, preprints, competitions, resources, shortCourses, equalContribution, copy } = require('./content.cjs');
 
 for (const [file, lang] of [['index.html', 'en'], ['zh.html', 'zh']]) {
   const h = fs.readFileSync(path.join(__dirname, file), 'utf8');
@@ -15,6 +15,13 @@ for (const [file, lang] of [['index.html', 'en'], ['zh.html', 'zh']]) {
   for (const [id,,,, doi] of publications) assert.ok(row(id).includes('https://doi.org/' + doi));
   for (const [id,,,, url] of preprints) assert.ok(row(id).includes(url));
   assert.equal((section('published').match(/class="paper"/g) || []).length, publications.length);
+  assert.equal((section('accepted').match(/class="paper"/g) || []).length, accepted.length);
+  const [eaclId, eaclTitle] = accepted[0];
+  assert.ok(section('accepted').includes(eaclTitle));
+  assert.ok(!section('published').includes(eaclTitle));
+  assert.match(row(eaclId), /<strong>Haoyi Zhang<\/strong>, Huaijin Ran/);
+  assert.ok(row(eaclId).includes('EACL 2027 Findings') && row(eaclId).includes(copy[lang].status.accepted));
+  assert.doesNotMatch(row(eaclId), /href=|contribution-mark|published|已发表/i);
   assert.equal((section('preprints').match(/class="paper"/g) || []).length, preprints.length);
   assert.equal((section('src').match(/class="paper"/g) || []).length, competitions.length);
   assert.match(section('src'), new RegExp(copy[lang].status.abstractAccepted));
